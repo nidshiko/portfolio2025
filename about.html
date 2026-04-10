@@ -83,7 +83,7 @@
       <ul class="nav-links">
         <li><a href="index.html" class="nav-link">Work</a></li>
         <li><a href="about.html" class="nav-link">About</a></li>
-        <li><a href="mailto:tu@email.com">Contact</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#f78382b7929a969e9bd994989a">Contact</a></li>
       </ul>
     </nav>
 
@@ -141,7 +141,7 @@
         </div>
 
         <div class="contact-section">
-          <a href="mailto:tu@email.com" class="contact-link">tu@email.com</a>
+          <a href="/cdn-cgi/l/email-protection#9aeeefdafff7fbf3f6b4f9f5f7" class="contact-link"><span class="__cf_email__" data-cfemail="b6c2c3f6d3dbd7dfda98d5d9db">[email&#160;protected]</span></a>
           <a href="https://linkedin.com/in/lucianasalomon" target="_blank" class="contact-link">LinkedIn</a>
           <a href="https://instagram.com/hice_todo_esto" target="_blank" class="contact-link">@hice_todo_esto</a>
         </div>
@@ -153,12 +153,12 @@
       <div class="footer-links">
         <a href="https://linkedin.com/in/lucianasalomon" target="_blank">LinkedIn</a>
         <a href="https://instagram.com/hice_todo_esto" target="_blank">Instagram</a>
-        <a href="mailto:tu@email.com">Contact</a>
+        <a href="/cdn-cgi/l/email-protection#d2a6a792b7bfb3bbbefcb1bdbf">Contact</a>
       </div>
     </footer>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     document.querySelectorAll('a.nav-link, a[href$=".html"]').forEach(function(link) {
       link.addEventListener('click', function(e) {
         var href = this.getAttribute('href');
@@ -171,36 +171,10 @@
     });
   </script>
 
-    // Fade in on scroll
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.grid img, .grid-gifs img, .hero-img').forEach(function(el) {
-      el.classList.add('fade-observe');
-      obs.observe(el);
-    });
-    // Lightbox
-    var lb = document.getElementById('lightbox');
-    var lbImg = document.getElementById('lightbox-img');
-    document.querySelectorAll('.grid img, .grid-gifs img').forEach(function(img) {
-      img.style.cursor = 'none';
-      img.addEventListener('click', function() {
-        lbImg.src = this.src;
-        lb.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
+    
     });
     document.getElementById('lightbox-close').addEventListener('click', function() {
       lb.classList.remove('open');
       document.body.style.overflow = '';
     });
-    lb.addEventListener('click', function(e) {
-      if (e.target === lb) { lb.classList.remove('open'); document.body.style.overflow = ''; }
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') { lb.classList.remove('open'); document.body.style.overflow = ''; }
-    });
-</body>
-</html>
+    lb.addEventListener('cli
