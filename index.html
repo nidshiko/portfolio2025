@@ -153,16 +153,17 @@
     </h1>
     <p class="tagline" id="tagline">Design &nbsp;·&nbsp; Illustration &nbsp;·&nbsp; Editorial</p>
     <div class="enter-wrap" id="enter-wrap">
-      <a class="enter-btn" id="enter-btn" href="#">Enter</a>
+      <p style="font-size:10px; font-weight:300; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.35);">Scroll to enter</p>
     </div>
   </div>
 
   <script>
     // Particle field
+    var isMobile = window.innerWidth < 768;
     var canvas = document.getElementById('c');
     var ctx = canvas.getContext('2d');
     var W, H, particles = [], mouse = { x: -999, y: -999 };
-    var COUNT = 80;
+    var COUNT = isMobile ? 25 : 80;
 
     function resize() {
       W = canvas.width = window.innerWidth;
@@ -211,6 +212,7 @@
     });
 
     function drawConnections() {
+      if (isMobile) return;
       for (var i = 0; i < particles.length; i++) {
         for (var j = i + 1; j < particles.length; j++) {
           var dx = particles[i].x - particles[j].x;
@@ -250,12 +252,33 @@
       document.getElementById('hint').classList.add('show');
     }, 1400);
 
-    // Enter
-    document.getElementById('enter-btn').addEventListener('click', function(e) {
-      e.preventDefault();
+    // Preload portfolio
+    var link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = 'portfolio.html';
+    document.head.appendChild(link);
+
+    // Scroll to enter
+    var triggered = false;
+    window.addEventListener('wheel', function(e) {
+      if (triggered) return;
+      triggered = true;
       var ov = document.getElementById('overlay');
       ov.classList.add('active');
       setTimeout(function() { window.location.href = 'portfolio.html'; }, 1100);
+    });
+    // Touch swipe up for mobile
+    var touchStartY = 0;
+    window.addEventListener('touchstart', function(e) { touchStartY = e.touches[0].clientY; });
+    window.addEventListener('touchend', function(e) {
+      if (triggered) return;
+      var dy = touchStartY - e.changedTouches[0].clientY;
+      if (dy > 40) {
+        triggered = true;
+        var ov = document.getElementById('overlay');
+        ov.classList.add('active');
+        setTimeout(function() { window.location.href = 'portfolio.html'; }, 1100);
+      }
     });
   </script>
 </body>
