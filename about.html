@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://lucianasalomon.com/about.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:title" content="About — Luciana Salomón">
-  <meta property="og:description" content="Graphic Designer and Illustrator based in Buenos Aires. FADU-UBA graduate, working at the intersection of editorial design, illustration, and production.">
+  <meta property="og:description" content="Graphic Designer and Illustrator based in Buenos Aires.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Archivo:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <style>
@@ -44,13 +44,6 @@
     .skill-group h3 { font-size:11px; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:0.5px solid var(--border); }
     .skill-group ul { list-style:none; }
     .skill-group li { font-size:13px; font-weight:300; color:var(--text-secondary); padding:0.35rem 0; border-bottom:0.5px solid var(--border); }
-    @media (max-width:600px) {
-      .port { padding:0 1.5rem 4rem; }
-      .about-grid { grid-template-columns:1fr; gap:2rem; }
-      .photo-col { position:static; }
-      .skills-grid { grid-template-columns:1fr 1fr; }
-      .nav-links { display:none; }
-    }
     .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:0; }
     .hamburger span { display:block; width:22px; height:1px; background:var(--text); transition:all 0.3s ease; }
     .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
@@ -59,7 +52,14 @@
     .mobile-menu { display:none; position:fixed; inset:0; background:var(--bg); z-index:998; flex-direction:column; align-items:center; justify-content:center; gap:2.5rem; }
     .mobile-menu.open { display:flex; }
     .mobile-menu a { font-family:'DM Serif Display',serif; font-size:32px; letter-spacing:-0.02em; text-decoration:none; color:var(--text); }
-    @media (max-width:600px) { .hamburger { display:flex; } .nav-links { display:none !important; } }
+    @media (max-width:600px) {
+      .port { padding:0 1.5rem 4rem; }
+      .about-grid { grid-template-columns:1fr; gap:2rem; }
+      .photo-col { position:static; }
+      .skills-grid { grid-template-columns:1fr 1fr; }
+      .nav-links { display:none !important; }
+      .hamburger { display:flex; }
+    }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM398XTRWW"></script>
@@ -96,20 +96,15 @@
           <img src="img/bio_1.jpg" alt="Luciana Salomón">
         </div>
       </div>
-
       <div class="content-col">
         <p class="section-label">About</p>
-
         <p class="bio-text">I'm a Graphic Designer and illustrator based in Buenos Aires. I graduated from FADU-UBA and have spent the past years working at a design agency — building systems, solving complex problems at scale, and making sure every detail holds up.</p>
         <p class="bio-text">I approach design as a form of communication. Whether it's a client campaign or a self-published zine about pole sport, the goal is the same: clarity, precision, and intent.</p>
         <p class="bio-text">My personal work — zines, illustrated books, fanzines — exists because I need it to. Not to fill a portfolio, but to explore, to think, and to expand. It's where I test ideas, take risks, and let things be less controlled. Somehow, it all connects.</p>
-
         <div class="contact-section">
-          <a href="/cdn-cgi/l/email-protection#f784969b989a98999b82949e96999691b7909a969e9bd994989a" class="contact-link"><span class="__cf_email__" data-cfemail="0b786a6764666465677e68626a656a6d4b6c666a626725686466">[email&#160;protected]</span></a>
+          <a href="mailto:salomonlucianaf@gmail.com" class="contact-link">salomonlucianaf&#64;gmail.com</a>
           <a href="https://linkedin.com/in/lucianasalomon" target="_blank" class="contact-link">LinkedIn</a>
-          <a href="cv.html" class="contact-link">My CV</a>
         </div>
-
         <div class="skills-section">
           <p class="section-label">Capabilities</p>
           <div class="skills-grid">
@@ -144,13 +139,32 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
+    var ham = document.getElementById('hamburger');
+    var menu = document.getElementById('mobile-menu');
+    ham.addEventListener('click', function() {
+      ham.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        ham.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
     document.querySelectorAll('a').forEach(function(a) {
       a.addEventListener('click', function(e) {
         var href = a.getAttribute('href');
-        if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('#') || href.includes(
+        if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('#') || href.includes('#') || a.hasAttribute('download')) return;
+        e.preventDefault();
+        document.getElementById('curtain').classList.add('cover');
+        setTimeout(function() { window.location.href = href; }, 300);
+      });
+    });
+  </script>
+</body>
+</html>
