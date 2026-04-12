@@ -7,31 +7,66 @@
   <title>CV — Luciana Salomón</title>
   <meta name="description" content="CV of Luciana Salomón, Graphic Designer and Illustrator based in Buenos Aires.">
   <meta name="author" content="Luciana Salomón">
-  <meta name="robots" content="index, follow">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://lucianasalomon.com/img/og_image.jpg">
-  <meta property="og:url" content="https://lucianasalomon.com/cv.html">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:title" content="CV — Luciana Salomón">
-  <meta property="og:description" content="CV of Luciana Salomón, Graphic Designer and Illustrator based in Buenos Aires.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Archivo:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg:#faf9f7; --text:#111111; --text-secondary:#555555; --text-tertiary:#999999; --border:rgba(0,0,0,0.12); }
-    body { font-family:'Archivo',sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; }
-
+    body { font-family:'Archivo',sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; animation:fadeIn 0.3s ease forwards; }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
     #curtain { position:fixed; inset:0; background:var(--bg); z-index:999; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
     #curtain.cover { opacity:1; pointer-events:all; }
-    body { animation: fadeIn 0.3s ease forwards; }
-    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-    #') || href.includes('#') || a.hasAttribute('download')) return;
+    .port { max-width:1100px; margin:0 auto; padding:0 3rem 6rem; }
+    nav { display:flex; justify-content:space-between; align-items:baseline; padding:2rem 0; margin-bottom:3rem; }
+    .nav-name { font-family:'Archivo',sans-serif; font-size:14px; font-weight:500; letter-spacing:-0.01em; text-decoration:none; color:var(--text); }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; }
+    .nav-links a { font-size:11px; font-weight:300; color:var(--text-tertiary); text-decoration:none; letter-spacing:0.1em; text-transform:uppercase; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--text); }
+    .cv-header { display:flex; justify-content:space-between; align-items:baseline; padding-bottom:1rem; border-bottom:0.5px solid var(--border); margin-bottom:2rem; }
+    .cv-title { font-family:'DM Serif Display',serif; font-size:28px; letter-spacing:-0.02em; }
+    .cv-download { font-size:11px; font-weight:300; color:var(--text-tertiary); text-decoration:none; letter-spacing:0.1em; text-transform:uppercase; transition:color 0.2s; }
+    .cv-download:hover { color:var(--text); }
+    .cv-embed { width:100%; height:85vh; border:none; border-radius:4px; }
+    @media (max-width:600px) { .port { padding:0 1.5rem 4rem; } .nav-links { display:none; } .cv-embed { height:70vh; } }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM398XTRWW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HM398XTRWW');
+  </script>
+</head>
+<body>
+  <div id="curtain"></div>
+  <div class="port">
+    <nav>
+      <a href="portfolio.html" class="nav-name">Luciana Salomón</a>
+      <ul class="nav-links">
+        <li><a href="portfolio.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="cv.html">CV</a></li>
+      </ul>
+    </nav>
+
+    <div class="cv-header">
+      <h1 class="cv-title">CV</h1>
+      <a href="Luciana_Salomon_CV.pdf" download class="cv-download">Download PDF ↓</a>
+    </div>
+
+    <embed src="Luciana_Salomon_CV.pdf" type="application/pdf" class="cv-embed">
+
+  </div>
+
+  <script>
+    document.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var href = a.getAttribute('href');
+        if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('#') || href.includes('#') || a.hasAttribute('download')) return;
         e.preventDefault();
-        var port = document.querySelector('.port');
-        var curtain = document.getElementById('curtain');
-        if (port) port.classList.add('leaving');
-        curtain.classList.add('active');
-        setTimeout(function() { window.location.href = href; }, 400);
+        document.getElementById('curtain').classList.add('cover');
+        setTimeout(function() { window.location.href = href; }, 300);
       });
     });
   </script>

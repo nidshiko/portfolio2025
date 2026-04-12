@@ -19,13 +19,76 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg:#faf9f7; --text:#111111; --text-secondary:#555555; --text-tertiary:#999999; --border:rgba(0,0,0,0.12); --hover-bg:#f7f7f5; }
-    body { font-family:'Archivo',sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; }
-
+    body { font-family:'Archivo',sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; animation:fadeIn 0.3s ease forwards; }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
     #curtain { position:fixed; inset:0; background:var(--bg); z-index:999; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
     #curtain.cover { opacity:1; pointer-events:all; }
-    body { animation: fadeIn 0.3s ease forwards; }
-    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-    #e192808d8e8c8e8f8d948288808f8087a1868c80888dcf828e8c" class="contact-link"><span class="__cf_email__" data-cfemail="443725282b292b2a2831272d252a2522042329252d286a272b29">[email&#160;protected]</span></a>
+    .port { max-width:1100px; margin:0 auto; padding:0 3rem 6rem; }
+    nav { display:flex; justify-content:space-between; align-items:baseline; padding:2rem 0; margin-bottom:4rem; }
+    .nav-name { font-family:'Archivo',sans-serif; font-size:14px; font-weight:500; letter-spacing:-0.01em; text-decoration:none; color:var(--text); }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; }
+    .nav-links a { font-size:11px; font-weight:300; color:var(--text-tertiary); text-decoration:none; letter-spacing:0.1em; text-transform:uppercase; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--text); }
+    .about-grid { display:grid; grid-template-columns:1fr 2fr; gap:5rem; margin-bottom:5rem; }
+    .photo-col { position:sticky; top:2rem; align-self:start; }
+    .photo { width:100%; aspect-ratio:3/4; border-radius:4px; overflow:hidden; background:var(--hover-bg); }
+    .photo img { width:100%; height:100%; object-fit:cover; display:block; }
+    .content-col { padding-top:0.5rem; }
+    .section-label { font-size:11px; font-weight:300; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:1.5rem; padding-bottom:1rem; border-bottom:0.5px solid var(--border); }
+    .bio-text { font-size:15px; font-weight:300; color:var(--text-secondary); line-height:1.85; margin-bottom:1.5rem; }
+    .contact-section { margin-top:2rem; display:flex; gap:2rem; flex-wrap:wrap; }
+    .contact-link { font-size:12px; font-weight:300; color:var(--text-tertiary); text-decoration:none; letter-spacing:0.06em; text-transform:uppercase; transition:color 0.2s; }
+    .contact-link:hover { color:var(--text); }
+    .skills-section { margin-top:3rem; padding-top:3rem; }
+    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:2rem; }
+    .skill-group h3 { font-size:11px; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:0.5px solid var(--border); }
+    .skill-group ul { list-style:none; }
+    .skill-group li { font-size:13px; font-weight:300; color:var(--text-secondary); padding:0.35rem 0; border-bottom:0.5px solid var(--border); }
+    @media (max-width:600px) {
+      .port { padding:0 1.5rem 4rem; }
+      .about-grid { grid-template-columns:1fr; gap:2rem; }
+      .photo-col { position:static; }
+      .skills-grid { grid-template-columns:1fr 1fr; }
+      .nav-links { display:none; }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM398XTRWW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HM398XTRWW');
+  </script>
+</head>
+<body>
+  <div id="curtain"></div>
+  <div class="port">
+    <nav>
+      <a href="portfolio.html" class="nav-name">Luciana Salomón</a>
+      <ul class="nav-links">
+        <li><a href="portfolio.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="cv.html">CV</a></li>
+      </ul>
+    </nav>
+
+    <div class="about-grid">
+      <div class="photo-col">
+        <div class="photo">
+          <img src="img/bio_1.jpg" alt="Luciana Salomón">
+        </div>
+      </div>
+
+      <div class="content-col">
+        <p class="section-label">About</p>
+
+        <p class="bio-text">I'm a Graphic Designer and illustrator based in Buenos Aires. I graduated from FADU-UBA and have spent the past years working at a design agency — building systems, solving complex problems at scale, and making sure every detail holds up.</p>
+        <p class="bio-text">I approach design as a form of communication. Whether it's a client campaign or a self-published zine about pole sport, the goal is the same: clarity, precision, and intent.</p>
+        <p class="bio-text">My personal work — zines, illustrated books, fanzines — exists because I need it to. Not to fill a portfolio, but to explore, to think, and to expand. It's where I test ideas, take risks, and let things be less controlled. Somehow, it all connects.</p>
+
+        <div class="contact-section">
+          <a href="mailto:salomonlucianaf@gmail.com" class="contact-link">salomonlucianaf@gmail.com</a>
           <a href="https://linkedin.com/in/lucianasalomon" target="_blank" class="contact-link">LinkedIn</a>
           <a href="cv.html" class="contact-link">My CV</a>
         </div>
@@ -69,13 +132,16 @@
     </div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    window.addEventListener('load', function() {
-      document.getElementById('curtain').style.opacity = '0';
-    });
+  <script>
     document.querySelectorAll('a').forEach(function(a) {
       a.addEventListener('click', function(e) {
         var href = a.getAttribute('href');
-        if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('#') || href.includes('#')) return;
+        if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('#') || href.includes('#') || a.hasAttribute('download')) return;
         e.preventDefault();
-        var c = document.getElementById(
+        document.getElementById('curtain').classList.add('cover');
+        setTimeout(function() { window.location.href = href; }, 300);
+      });
+    });
+  </script>
+</body>
+</html>
