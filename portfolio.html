@@ -190,7 +190,7 @@
     </div>
 
     <footer>
-      <span class="footer-copy">© 2025 Luciana Salomón</span>
+      <span class="footer-copy">© 2026 Luciana Salomón</span>
     </footer>
   </div>
 
@@ -204,6 +204,21 @@
         setTimeout(function() { window.location.href = href; }, 300);
       });
     });
+      // Hamburger menu
+    var ham = document.getElementById('hamburger');
+    var menu = document.getElementById('mobile-menu');
+    if (ham) {
+      ham.addEventListener('click', function() {
+        ham.classList.toggle('open');
+        menu.classList.toggle('open');
+      });
+      menu.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          ham.classList.remove('open');
+          menu.classList.remove('open');
+        });
+      });
+    }
   </script>
 </body>
 </html>
