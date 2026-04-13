@@ -38,7 +38,7 @@
     .submit-btn:hover { background:var(--hover-bg); border-color:var(--text); }
     .success-msg { display:none; font-size:13px; font-weight:300; color:var(--text-secondary); margin-top:1.5rem; }
     .lang-toggle { display:flex; align-items:center; gap:0.4rem; margin-left:2rem; }
-    .lang-btn { font-family:'Archivo',sans-serif; font-size:11px; font-weight:300; letter-spacing:0.1em; color:var(--text-tertiary); background:none; border:none; cursor:pointer; padding:0; transition:color 0.2s; }
+    .lang-btn { font-family:'Archivo',sans-serif; font-size:11px; font-weight:300; letter-spacing:0.1em; color:var(--text-tertiary); cursor:pointer; padding:0; transition:color 0.2s; }
     .lang-btn.active { color:var(--text); }
     .lang-btn:hover { color:var(--text); }
     .lang-sep { font-size:11px; color:var(--text-tertiary); font-weight:300; }
@@ -86,9 +86,9 @@
         <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
       </ul>
       <div class="lang-toggle">
-        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+        <span class="lang-btn active" id="btn-en" onclick="setLang('en')" style="cursor:pointer">EN</span>
         <span class="lang-sep">/</span>
-        <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+        <span class="lang-btn" id="btn-es" onclick="setLang('es')" style="cursor:pointer">ES</span>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -99,9 +99,9 @@
       <div class="contact-info">
         <h1 data-i18n="contact_h1">Let's work<br><em>together</em></h1>
         <div class="contact-links">
-          <a href="mailto:salomonlucianaf@gmail.com" class="contact-link">
-            salomonlucianaf@gmail.com
-            <span>Email</span>
+          <a href="mailto:hello@lucianasalomon.com" class="contact-link">
+            hello@lucianasalomon.com
+            <span>↗</span>
           </a>
           <a href="https://linkedin.com/in/lucianasalomon" target="_blank" class="contact-link">
             LinkedIn
@@ -109,6 +109,10 @@
           </a>
           <a href="https://www.behance.net/SalomonLuciana" target="_blank" class="contact-link">
             Behance
+            <span>↗</span>
+          </a>
+          <a href="https://wa.me/5491124062851" target="_blank" class="contact-link">
+            WhatsApp
             <span>↗</span>
           </a>
         </div>
@@ -144,15 +148,15 @@
       ham.classList.toggle('open');
       menu.classList.toggle('open');
     });
+    document.getElementById('mobile-close').addEventListener('click', function() {
+      ham.classList.remove('open');
+      menu.classList.remove('open');
+    });
     menu.querySelectorAll('a').forEach(function(a) {
       a.addEventListener('click', function() {
         ham.classList.remove('open');
         menu.classList.remove('open');
       });
-    });
-    document.getElementById('mobile-close').addEventListener('click', function() {
-      ham.classList.remove('open');
-      menu.classList.remove('open');
     });
     var form = document.getElementById('contact-form');
     form.addEventListener('submit', function(e) {
