@@ -24,7 +24,7 @@
     #curtain { position:fixed; inset:0; background:var(--bg); z-index:999; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
     #curtain.cover { opacity:1; pointer-events:all; }
     .port { max-width:1100px; margin:0 auto; padding:0 3rem 6rem; }
-    nav { display:flex; justify-content:space-between; align-items:baseline; padding:2rem 0; margin-bottom:4rem; }
+    nav { display:flex; justify-content:space-between; align-items:center; padding:2rem 0; margin-bottom:4rem; }
     .nav-name { font-family:'Archivo',sans-serif; font-size:14px; font-weight:500; letter-spacing:-0.01em; text-decoration:none; color:var(--text); }
     .nav-links { display:flex; gap:2.5rem; list-style:none; }
     .nav-links a { font-size:11px; font-weight:300; color:var(--text-tertiary); text-decoration:none; letter-spacing:0.1em; text-transform:uppercase; transition:color 0.2s; }
@@ -145,7 +145,7 @@
     </div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     var ham = document.getElementById('hamburger');
     var menu = document.getElementById('mobile-menu');
     ham.addEventListener('click', function() {
@@ -158,7 +158,6 @@
         menu.classList.remove('open');
       });
     });
-    // Reset curtain on back button
     window.addEventListener('pageshow', function(e) {
       document.getElementById('curtain').classList.remove('cover');
       document.getElementById('curtain').style.opacity = '0';
@@ -168,4 +167,10 @@
         var href = a.getAttribute('href');
         if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('#') || href.includes('#') || a.hasAttribute('download')) return;
         e.preventDefault();
-        document.getElement
+        document.getElementById('curtain').classList.add('cover');
+        setTimeout(function() { window.location.href = href; }, 300);
+      });
+    });
+  </script>
+</body>
+</html>
