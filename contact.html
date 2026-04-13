@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Luciana Salomón</title>
+  <meta name="description" content="Get in touch with Luciana Salomón, Graphic Designer and Illustrator based in Buenos Aires.">
+  <meta name="author" content="Luciana Salomón">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Archivo:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#faf9f7; --text:#111111; --text-secondary:#555555; --text-tertiary:#999999; --border:rgba(0,0,0,0.12); --hover-bg:#f7f7f5; }
+    body { font-family:'Archivo',sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; animation:fadeIn 0.3s ease forwards; }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    #curtain { position:fixed; inset:0; background:var(--bg); z-index:999; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
+    #curtain.cover { opacity:1; pointer-events:all; }
+    .port { max-width:1100px; margin:0 auto; padding:0 3rem 6rem; }
+    nav { display:flex; justify-content:space-between; align-items:baseline; padding:2rem 0; margin-bottom:4rem; }
+    .nav-name { font-family:'Archivo',sans-serif; font-size:14px; font-weight:500; letter-spacing:-0.01em; text-decoration:none; color:var(--text); }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; }
+    .nav-links a { font-size:11px; font-weight:300; color:var(--text-tertiary); text-decoration:none; letter-spacing:0.1em; text-transform:uppercase; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--text); }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:8rem; align-items:start; }
+    .contact-info h1 { font-family:'DM Serif Display',serif; font-size:clamp(32px,5vw,52px); letter-spacing:-0.03em; line-height:1.05; margin-bottom:2rem; }
+    .contact-info h1 em { font-style:italic; color:var(--text-secondary); }
+    .contact-links { display:flex; flex-direction:column; gap:1rem; margin-top:2rem; }
+    .contact-link { font-size:13px; font-weight:300; color:var(--text-secondary); text-decoration:none; letter-spacing:0.02em; transition:color 0.2s; display:flex; justify-content:space-between; align-items:center; padding-bottom:1rem; border-bottom:0.5px solid var(--border); }
+    .contact-link:hover { color:var(--text); }
+    .contact-link span { font-size:10px; color:var(--text-tertiary); letter-spacing:0.1em; text-transform:uppercase; }
+    .form-group { margin-bottom:1.5rem; }
+    .form-group label { display:block; font-size:10px; font-weight:300; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:0.5rem; }
+    .form-group input, .form-group textarea { width:100%; padding:0.75rem 0; font-family:'Archivo',sans-serif; font-size:14px; font-weight:300; color:var(--text); background:transparent; border:none; border-bottom:0.5px solid var(--border); outline:none; resize:none; transition:border-color 0.2s; }
+    .form-group input:focus, .form-group textarea:focus { border-bottom-color:var(--text); }
+    .form-group textarea { height:120px; }
+    .submit-btn { margin-top:2rem; font-family:'Archivo',sans-serif; font-size:11px; font-weight:300; letter-spacing:0.15em; text-transform:uppercase; color:var(--text); background:transparent; border:0.5px solid var(--border); padding:14px 32px; cursor:pointer; transition:background 0.2s, border-color 0.2s; }
+    .submit-btn:hover { background:var(--hover-bg); border-color:var(--text); }
+    .success-msg { display:none; font-size:13px; font-weight:300; color:var(--text-secondary); margin-top:1.5rem; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:0; }
+    .hamburger span { display:block; width:22px; height:1px; background:var(--text); transition:all 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; inset:0; background:var(--bg); z-index:998; flex-direction:column; align-items:center; justify-content:center; gap:2.5rem; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { font-family:'DM Serif Display',serif; font-size:32px; letter-spacing:-0.02em; text-decoration:none; color:var(--text); }
+    @media (max-width:600px) {
+      .port { padding:0 1.5rem 4rem; }
+      .contact-grid { grid-template-columns:1fr; gap:4rem; }
+      .nav-links { display:none !important; }
+      .hamburger { display:flex; }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM398XTRWW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HM398XTRWW');
+  </script>
+</head>
+<body>
+  <div id="curtain"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="portfolio.html">Work</a>
+    <a href="about.html">About</a>
+    <a href="cv.html">CV</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="port">
+    <nav>
+      <a href="portfolio.html" class="nav-name">Luciana Salomón</a>
+      <ul class="nav-links">
+        <li><a href="portfolio.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h1>Let's work<br><em>together</em></h1>
+        <div class="contact-links">
+          <a href="mailto:salomonlucianaf&#64;gmail.com" class="contact-link">
+            salomonlucianaf&#64;gmail.com
+            <span>Email</span>
+          </a>
+          <a href="https://linkedin.com/in/lucianasalomon" target="_blank" class="contact-link">
+            LinkedIn
+            <span>↗</span>
+          </a>
+          <a href="https://www.behance.net/SalomonLuciana" target="_blank" class="contact-link">
+            Behance
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+
+      <form id="contact-form" action="https://formspree.io/f/mvzdpldd" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send message</button>
+        <p class="success-msg" id="success-msg">Message sent. I'll get back to you soon.</p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('pageshow', function() {
+      document.getElementById('curtain').classList.remove('cover');
+      document.getElementById('curtain').style.opacity = '0';
+    });
+    var ham = document.getElementById('hamburger');
+    var menu = document.getElementById('mobile-menu');
+    ham.addEventListener('click', function() {
+      ham.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        ham.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+    // Form submit
+    var form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(r) {
+        if (r.ok) {
+          form.reset();
+          document.getElementById('success-msg').style.display = 'block';
+        }
+      });
+    });
+    document.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var href = a.getAttribute('href');
+        if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('#') || href.includes('#') || a.hasAttribute('download')) return;
+        e.preventDefault();
+        document.getElementById('curtain').classList.add('cover');
+        setTimeout(function() { window.location.href = href; }, 300);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -85,6 +85,7 @@
     <a href="portfolio.html">Work</a>
     <a href="about.html">About</a>
     <a href="cv.html">CV</a>
+    <a href="contact.html">Contact</a>
   </div>
   <div class="port">
     <nav>
@@ -93,6 +94,7 @@
         <li><a href="portfolio.html">Work</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -132,6 +134,11 @@
     </div>
   </div>
   <script>
+    // Reset curtain on back button
+    window.addEventListener('pageshow', function(e) {
+      document.getElementById('curtain').classList.remove('cover');
+      document.getElementById('curtain').style.opacity = '0';
+    });
     // Hamburger menu
     var ham = document.getElementById('hamburger');
     var menu = document.getElementById('mobile-menu');

@@ -76,6 +76,7 @@
     <a href="portfolio.html">Work</a>
     <a href="about.html">About</a>
     <a href="cv.html">CV</a>
+    <a href="contact.html">Contact</a>
   </div>
   <div class="port">
     <nav>
@@ -84,6 +85,7 @@
         <li><a href="portfolio.html">Work</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -102,7 +104,7 @@
         <p class="bio-text">I approach design as a form of communication. Whether it's a client campaign or a self-published zine about pole sport, the goal is the same: clarity, precision, and intent.</p>
         <p class="bio-text">My personal work — zines, illustrated books, fanzines — exists because I need it to. Not to fill a portfolio, but to explore, to think, and to expand. It's where I test ideas, take risks, and let things be less controlled. Somehow, it all connects.</p>
         <div class="contact-section">
-          <a href="mailto:salomonlucianaf@gmail.com" class="contact-link">salomonlucianaf&#64;gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#2b584a4744464445475e48424a454a4d6b4c464a424705484446" class="contact-link">salomonlucianaf&#64;gmail.com</a>
           <a href="https://linkedin.com/in/lucianasalomon" target="_blank" class="contact-link">LinkedIn</a>
         </div>
         <div class="skills-section">
@@ -143,7 +145,7 @@
     </div>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     var ham = document.getElementById('hamburger');
     var menu = document.getElementById('mobile-menu');
     ham.addEventListener('click', function() {
@@ -156,15 +158,14 @@
         menu.classList.remove('open');
       });
     });
+    // Reset curtain on back button
+    window.addEventListener('pageshow', function(e) {
+      document.getElementById('curtain').classList.remove('cover');
+      document.getElementById('curtain').style.opacity = '0';
+    });
     document.querySelectorAll('a').forEach(function(a) {
       a.addEventListener('click', function(e) {
         var href = a.getAttribute('href');
         if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('#') || href.includes('#') || a.hasAttribute('download')) return;
         e.preventDefault();
-        document.getElementById('curtain').classList.add('cover');
-        setTimeout(function() { window.location.href = href; }, 300);
-      });
-    });
-  </script>
-</body>
-</html>
+        document.getElement
