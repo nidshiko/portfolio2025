@@ -63,6 +63,196 @@
     .mobile-menu.open { display:flex; }
     .mobile-menu a { font-family:'DM Serif Display',serif; font-size:32px; letter-spacing:-0.02em; text-decoration:none; color:var(--text); }
     @media (max-width:600px) { .hamburger { display:flex; } .nav-links { display:none !important; } }
+
+    /* ── Postcards carousel ── */
+    .postcards-section { margin-top: 0; }
+
+    .pc-carousel {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      user-select: none;
+    }
+
+    .pc-track-wrap {
+      flex: 1;
+      overflow: hidden;
+      /* allow shadows to breathe vertically */
+      padding: 2rem 0;
+      margin: -2rem 0;
+      position: relative;
+    }
+
+    .pc-track {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      transition: transform 0.55s cubic-bezier(0.22,1,0.36,1);
+      padding: 2.5rem 0;
+    }
+
+    .pc-slide {
+      flex-shrink: 0;
+      background: #fff;
+      border-radius: 3px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease, opacity 0.45s ease;
+    }
+    .pc-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .pc-slide.active {
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      transform: scale(1);
+      opacity: 1;
+      cursor: zoom-in;
+    }
+    .pc-slide.side {
+      opacity: 0.45;
+      transform: scale(0.88);
+    }
+    .pc-slide.side:hover {
+      opacity: 0.65;
+    }
+
+    .pc-btn {
+      background: none;
+      border: none;
+      color: var(--text-tertiary);
+      font-family: 'Archivo', sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+      cursor: pointer;
+      padding: 1rem 1.25rem;
+      transition: color 0.2s;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .pc-btn:hover { color: var(--text); }
+
+    .pc-dots {
+      display: flex;
+      gap: 7px;
+      justify-content: center;
+      margin-top: 1.25rem;
+    }
+    .pc-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      padding: 0;
+    }
+    .pc-dot.active {
+      background: var(--text);
+      transform: scale(1.35);
+    }
+
+    /* ── Postcard lightbox ── */
+    .postcard-lb {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,8,6,0.96);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .postcard-lb.open { display: flex; }
+    .plb-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .plb-card {
+      background: #fff;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+      max-height: 86vh;
+      max-width: 72vw;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .plb-card.fade-out {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    .plb-card img {
+      display: block;
+      max-height: 86vh;
+      max-width: 72vw;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+    .plb-nav {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.45);
+      font-family: 'Archivo', sans-serif;
+      font-size: 22px;
+      font-weight: 300;
+      cursor: pointer;
+      padding: 1rem;
+      transition: color 0.2s;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .plb-nav:hover { color: #fff; }
+    .plb-close {
+      position: fixed;
+      top: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Archivo', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .plb-close:hover { color: #fff; }
+    .plb-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .plb-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+    .plb-dot.active {
+      background: rgba(255,255,255,0.9);
+      transform: scale(1.3);
+    }
+    @media (max-width: 700px) {
+      .pc-btn { padding: 0.5rem 0.75rem; font-size: 16px; }
+      .plb-card { max-width: 90vw; max-height: 72vh; }
+      .plb-card img { max-width: 90vw; max-height: 72vh; }
+      .plb-nav { font-size: 18px; padding: 0.5rem; }
+    }
     .lang-toggle { display:flex; align-items:center; gap:0.4rem; margin-left:2rem; }
     .lang-btn { font-family:'Archivo',sans-serif; font-size:11px; font-weight:300; letter-spacing:0.1em; color:var(--text-tertiary); background:none; border:none; outline:none; cursor:pointer; padding:0; transition:color 0.2s; }
     .lang-btn.active { color:var(--text); }
@@ -70,6 +260,8 @@
     .lang-sep { font-size:11px; color:var(--text-tertiary); font-weight:300; }
     .mobile-close { position:absolute; top:2rem; right:2rem; font-size:24px; font-weight:300; background:none; border:none; color:var(--text); cursor:pointer; line-height:1; padding:0; }
     @media (max-width:600px) { .lang-toggle { margin-left:1rem; } }
+
+
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM398XTRWW"></script>
@@ -145,7 +337,34 @@
       <img src="img/centauro_3.jpg" alt="">
       <img src="img/centauro_7.jpg" alt="">
       <img src="img/centauro_4.jpg" alt="" class="full">
-      <img src="img/centauro_5.gif" alt="" class="full">
+      <div class="full postcards-section">
+        <div class="pc-carousel" id="pc-carousel">
+          <button class="pc-btn" id="pc-prev">←</button>
+          <div class="pc-track-wrap">
+            <div class="pc-track" id="pc-track">
+              <div class="pc-slide" data-index="0" style="width:52%; aspect-ratio:10/12;"><img src="img/centauro_postal_1.jpg" alt="El Centauro — Postal 1"></div>
+              <div class="pc-slide" data-index="1" style="width:52%; aspect-ratio:10/12;"><img src="img/centauro_postal_2.jpg" alt="El Centauro — Postal 2"></div>
+              <div class="pc-slide" data-index="2" style="width:52%; aspect-ratio:10/12;"><img src="img/centauro_postal_3.jpg" alt="El Centauro — Postal 3"></div>
+              <div class="pc-slide" data-index="3" style="width:52%; aspect-ratio:10/12;"><img src="img/centauro_postal_4.jpg" alt="El Centauro — Postal 4"></div>
+            </div>
+          </div>
+          <button class="pc-btn" id="pc-next">→</button>
+        </div>
+        <div class="pc-dots" id="pc-dots"></div>
+      </div>
+    </div>
+
+    <!-- Postcard lightbox -->
+    <div id="postcard-lb" class="postcard-lb">
+      <button class="plb-close" id="plb-close">Close ×</button>
+      <button class="plb-nav plb-prev" id="plb-prev">←</button>
+      <div class="plb-stage">
+        <div class="plb-card" id="plb-card">
+          <img id="plb-img" src="" alt="">
+        </div>
+        <div class="plb-dots" id="plb-dots"></div>
+      </div>
+      <button class="plb-nav plb-next" id="plb-next">→</button>
     </div>
 
     <div class="project-nav">
@@ -265,6 +484,146 @@
     }
     var savedLang = localStorage.getItem('lang') || 'en';
     setLang(savedLang);
+  </script>
+
+  <script>
+    // ── Postcard carousel (infinite) ──
+    var postcardSrcs = [
+      'img/centauro_postal_1.jpg',
+      'img/centauro_postal_2.jpg',
+      'img/centauro_postal_3.jpg',
+      'img/centauro_postal_4.jpg'
+    ];
+    var pcCurrent = 0;
+    var pcTrack = document.getElementById('pc-track');
+    var pcDotsEl = document.getElementById('pc-dots');
+
+    // Build carousel dots
+    postcardSrcs.forEach(function(_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'pc-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Postal ' + (i + 1));
+      dot.addEventListener('click', function() { pcGoTo(i); });
+      pcDotsEl.appendChild(dot);
+    });
+
+    var pcSlides = document.querySelectorAll('.pc-slide');
+
+    function pcUpdateLayout() {
+      var wrap = document.querySelector('.pc-track-wrap');
+      var wrapW = wrap.offsetWidth;
+      var slideW = wrapW * 0.52;
+      var gap = parseFloat(getComputedStyle(pcTrack).gap) || 32;
+      var offset = pcCurrent * (slideW + gap) - (wrapW - slideW) / 2;
+      pcTrack.style.transform = 'translateX(' + (-offset) + 'px)';
+
+      pcSlides.forEach(function(s, i) {
+        s.classList.toggle('active', i === pcCurrent);
+        s.classList.toggle('side', i !== pcCurrent);
+      });
+
+      pcDotsEl.querySelectorAll('.pc-dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === pcCurrent);
+      });
+    }
+
+    function pcGoTo(idx) {
+      pcCurrent = (idx + postcardSrcs.length) % postcardSrcs.length;
+      pcUpdateLayout();
+    }
+
+    document.getElementById('pc-prev').addEventListener('click', function() { pcGoTo(pcCurrent - 1); });
+    document.getElementById('pc-next').addEventListener('click', function() { pcGoTo(pcCurrent + 1); });
+
+    pcSlides.forEach(function(slide) {
+      slide.addEventListener('click', function() {
+        var idx = parseInt(slide.dataset.index);
+        if (idx !== pcCurrent) {
+          pcGoTo(idx);
+        } else {
+          openPostcardLb(pcCurrent);
+        }
+      });
+    });
+
+    var pcTouchX = 0;
+    pcTrack.addEventListener('touchstart', function(e) { pcTouchX = e.touches[0].clientX; }, { passive: true });
+    pcTrack.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - pcTouchX;
+      if (Math.abs(dx) > 40) pcGoTo(dx < 0 ? pcCurrent + 1 : pcCurrent - 1);
+    });
+
+    window.addEventListener('resize', pcUpdateLayout);
+    setTimeout(pcUpdateLayout, 50);
+
+    // ── Postcard lightbox ──
+    var plbCurrent = 0;
+    var plb = document.getElementById('postcard-lb');
+    var plbImg = document.getElementById('plb-img');
+    var plbCard = document.getElementById('plb-card');
+    var plbDotsEl = document.getElementById('plb-dots');
+
+    // Build lightbox dots
+    postcardSrcs.forEach(function(_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'plb-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Postal ' + (i + 1));
+      dot.addEventListener('click', function() { goToPostcard(i); });
+      plbDotsEl.appendChild(dot);
+    });
+
+    function plbUpdateDots() {
+      plbDotsEl.querySelectorAll('.plb-dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === plbCurrent);
+      });
+    }
+
+    function goToPostcard(idx) {
+      plbCard.classList.add('fade-out');
+      setTimeout(function() {
+        plbCurrent = (idx + postcardSrcs.length) % postcardSrcs.length;
+        plbImg.src = postcardSrcs[plbCurrent];
+        plbUpdateDots();
+        plbCard.classList.remove('fade-out');
+      }, 220);
+    }
+
+    function openPostcardLb(idx) {
+      plbCurrent = idx;
+      plbImg.src = postcardSrcs[plbCurrent];
+      plbUpdateDots();
+      plb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePostcardLb() {
+      plb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('plb-prev').addEventListener('click', function(e) { e.stopPropagation(); goToPostcard(plbCurrent - 1); });
+    document.getElementById('plb-next').addEventListener('click', function(e) { e.stopPropagation(); goToPostcard(plbCurrent + 1); });
+    document.getElementById('plb-close').addEventListener('click', closePostcardLb);
+    plb.addEventListener('click', function(e) { if (e.target === plb) closePostcardLb(); });
+
+    document.addEventListener('keydown', function(e) {
+      if (plb.classList.contains('open')) {
+        if (e.key === 'ArrowRight') goToPostcard(plbCurrent + 1);
+        if (e.key === 'ArrowLeft') goToPostcard(plbCurrent - 1);
+        if (e.key === 'Escape') closePostcardLb();
+      } else {
+        if (e.key === 'ArrowRight') pcGoTo(pcCurrent + 1);
+        if (e.key === 'ArrowLeft') pcGoTo(pcCurrent - 1);
+      }
+    });
+
+    // Touch swipe on lightbox
+    var plbTouchX = 0;
+    plb.addEventListener('touchstart', function(e) { plbTouchX = e.touches[0].clientX; }, { passive: true });
+    plb.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - plbTouchX;
+      if (Math.abs(dx) > 40) goToPostcard(dx < 0 ? plbCurrent + 1 : plbCurrent - 1);
+    });
   </script>
 </body>
 </html>
